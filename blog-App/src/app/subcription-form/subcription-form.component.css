@@ -1,25 +1,15 @@
 .card {
     background-color: var(--secondary-color);  
     border: none;
-    width: 1200px;
-   
-   
+    width: 1300px;
+    justify-content: center;
 }
 
 input[type = text] , input[type = email]{
-    height: 60px;
-    padding-left: 20px;
-    font-size: 13px;
+    
     width: 100%;
 }
 
-.btn-sub{
-    height: 58px;
-    border: none;
-    font-size: 13px;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-}
 
 .sub-text {
     width: 500px;
@@ -30,3 +20,4 @@ input[type = text] , input[type = email]{
 h3 ,p {
     color: var(--body-text-color); /* Change the color to your desired color */
 }
+
