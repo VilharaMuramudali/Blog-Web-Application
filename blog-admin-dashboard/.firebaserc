@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "blog-application-fbac6": {
+      "hosting": {
+        "blog-admin-dashboard": [
+          "blog-application-fbac6"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "blog-application-fbac6"
+  }
+}
