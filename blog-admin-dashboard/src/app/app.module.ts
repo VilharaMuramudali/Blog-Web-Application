@@ -7,6 +7,8 @@ import { AngularFireModule } from '@angular/fire/compat'; // Import AngularFireM
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app'; // Import FirebaseApp functions
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'; // Import AngularFirestoreModule
 import { environment } from '../environments/environment';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +18,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { provideFirestore } from '@angular/fire/firestore';
 import { getFirestore } from '@firebase/firestore';
+import { NgFor } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { getFirestore } from '@firebase/firestore';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    provideFirestore(() =>getFirestore())
+    provideFirestore(() =>getFirestore()),
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    NgFor
   ],
   providers: [],
   bootstrap :[AppComponent]

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Firestore ,collection ,addDoc} from '@angular/fire/firestore'
-import { AngularFirestore} from '@angular/fire/compat/firestore';
-import { doc } from '@firebase/firestore';
 import { CategoriesService } from '../services/categories.service';
+import { Category } from '../models/category';
+// import { Firestore ,collection ,addDoc} from '@angular/fire/firestore'
+// import { AngularFirestore} from '@angular/fire/compat/firestore';
+// import { doc } from '@firebase/firestore';
 
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-categories',
@@ -14,21 +16,30 @@ import { CategoriesService } from '../services/categories.service';
  
 export class CategoriesComponent implements OnInit {
 
+  categoryArray: Array<object> | undefined;
+
   constructor(private categoryService :CategoriesService) { }
 
   
     ngOnInit(): void {
+        this.categoryService.loadData().subscribe(val =>{
+          console.log(val);
+          this.categoryArray =val;
+        })
+        
+    }
+
+    onSubmit(formData:NgForm){
+      let categoryData : Category = {
+        category :formData.value.category,
+      }
+      this.categoryService.saveData(categoryData)
 
     }
 
-    onSubmit(formData :NgForm){
-
-      let categoryData = {
-        category :formData.value.category
+      onEdit(category){
+        console.log(category);
       }
-
-      this.categoryService.saveData(categoryData)
-
       // let subcategoryData = {
       //   subcategory :'subCategory1'
       // }
@@ -52,10 +63,8 @@ export class CategoriesComponent implements OnInit {
       // })
       // .catch(err => { console.log(err)});
 
-  
-
       
-    }
+    
 
 }
 /*const collectionInstance = collection(this.afs,'categories');
